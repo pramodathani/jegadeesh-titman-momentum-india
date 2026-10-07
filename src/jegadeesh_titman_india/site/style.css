@@ -22,30 +22,6 @@
   --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --page: #1a1a19;
-    --surface: #1a1a19;
-    --ink: #f4f3ef;
-    --ink-secondary: #c3c2b7;
-    --ink-muted: #9b9a94;
-    --rule: #c3c2b7;
-    --hairline: #2c2c2a;
-    --baseline: #383835;
-    --box: #232322;
-    --link: #86b6ef;
-    --series-1: #3987e5;
-    --series-2: #d95926;
-    --series-3: #199e70;
-    --diverging-negative-strong: #e66767;
-    --diverging-negative: #8a3b3a;
-    --diverging-neutral: #383835;
-    --diverging-positive: #1c5cab;
-    --diverging-positive-strong: #86b6ef;
-  }
-}
-
 * {
   box-sizing: border-box;
 }

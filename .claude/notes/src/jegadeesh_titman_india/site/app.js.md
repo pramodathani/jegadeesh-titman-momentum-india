@@ -18,7 +18,7 @@ The specification is kept in the URL hash, such as `#j12-k3-skip5-top500`, so an
 
 ## Charts
 
-Apache ECharts 5.5.1 from jsDelivr, rendered as SVG, with the page's serif face. Colours follow the dataviz reference palette's first two categorical slots (blue for the portfolio, orange for the index), validated for colour-blind separation in both modes by the palette's documentation; the validator itself could not be run because Node.js is not installed. Heat maps use the palette's blue–red diverging pair with a grey midpoint. Dark mode follows the operating system's setting and redraws the charts when it changes. No chart uses two y-axes: turnover and cost drag were split, with cost drag moved to Table 7.
+Apache ECharts 5.5.1 from jsDelivr, rendered as SVG, with the page's serif face. Colours follow the dataviz reference palette's first two categorical slots (blue for the portfolio, orange for the index), validated for colour-blind separation in both modes by the palette's documentation; the validator itself could not be run because Node.js is not installed. Heat maps use the palette's blue–red diverging pair with a grey midpoint. The site always uses the light theme, at the user's request on 2026-10-07. No chart uses two y-axes: turnover and cost drag were split, with cost drag moved to Table 7.
 
 ## Running locally
 

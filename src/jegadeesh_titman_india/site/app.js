@@ -313,13 +313,6 @@ class ChartRegistry {
     return this.charts.get(elementId);
   }
 
-  disposeAll() {
-    for (const chart of this.charts.values()) {
-      chart.dispose();
-    }
-    this.charts.clear();
-  }
-
   base() {
     const colours = this.theme.colours();
     return {
@@ -435,10 +428,6 @@ class CompanionApp {
     document.getElementById('control-history-month').addEventListener('input', () => this.renderHistory());
     document.getElementById('control-share').addEventListener('change', () => this.renderShare());
     document.getElementById('download-current').addEventListener('click', () => this.downloadCurrent());
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      this.registry.disposeAll();
-      this.render();
-    });
   }
 
   async onSpecificationChange() {
