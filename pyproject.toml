@@ -42,6 +42,9 @@ dependencies = [
     "statsmodels>=0.14",
 ]
 
+[project.scripts]
+jt-momentum-app = "jegadeesh_titman_india.site_server:SiteServerApplication.launch"
+
 [project.optional-dependencies]
 live = [
     "tradingmachine @ git+https://github.com/pramodathani/tradingmachine.git",

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Momentum in Indian Equities</title>
+<meta name="description" content="An interactive companion to a replication of Jegadeesh and Titman (1993) on NSE shares, 2005 to 2026: portfolios, constituents, joiners and leavers, and analytics for all 64 strategies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+</head>
+<body>
+<main>
+
+<header class="paper-head">
+  <h1>Momentum in Indian Equities: Returns to Buying Winners on the National Stock Exchange, 2005–2026</h1>
+  <p class="authors">Pramod Athani</p>
+  <p class="affiliation">An interactive companion to a replication of Jegadeesh and Titman (1993) · <a href="https://github.com/pramodathani/jegadeesh-titman-momentum-india">code and data on GitHub</a></p>
+  <p class="dateline">Data through <span id="data-through">…</span> · snapshot built <span id="generated">…</span></p>
+</header>
+
+<section class="abstract">
+  <h2>Abstract</h2>
+  <p>We rebuild the 32 relative-strength strategies of Jegadeesh and Titman (1993) on every share traded on India's National Stock Exchange from 2005 to 2026, including shares later delisted, with returns adjusted for splits, bonuses and dividends. Momentum is stronger in India than in the original US sample: among the 500 most-traded shares, buying the top decile and selling the bottom decile earns 1.6% to 1.8% a month with a three-month holding period. Because shares cannot be shorted overnight in India's cash market, we also hold the winners decile alone. After Indian trading costs, the best such portfolio (nine-month ranking, three-month holding) compounded at <span id="abstract-best-return">…</span> a year from 2007 to 2026, against <span id="abstract-benchmark-return">…</span> for the NIFTY 500 with dividends, yet it fell 73% in 2008. This page lets the reader choose any of the 64 portfolios and inspect its returns, its current and historical constituents, its joiners and leavers each month, and its risk.</p>
+  <p class="keywords"><b>Keywords:</b> momentum, relative strength, market efficiency, India, NSE, replication. <b>JEL:</b> G11, G12, G14.</p>
+</section>
+
+<div class="specification" id="specification">
+  <div class="label">Portfolio specification</div>
+  <div class="controls">
+    <label>Ranking period <i>J</i>
+      <select id="control-ranking"></select>
+    </label>
+    <label>Holding period <i>K</i>
+      <select id="control-holding"></select>
+    </label>
+    <label>Gap
+      <select id="control-gap">
+        <option value="0">none</option>
+        <option value="5">one week</option>
+      </select>
+    </label>
+    <label>Universe
+      <select id="control-universe">
+        <option value="top500">500 most traded</option>
+        <option value="all">all NSE shares</option>
+      </select>
+    </label>
+  </div>
+  <div class="summary" id="specification-summary">Loading data…</div>
+</div>
+
+<h2 class="section">1. Introduction</h2>
+<p>Jegadeesh and Titman (1993) showed that US stocks with the highest returns over the past three to twelve months kept outperforming those with the lowest over the following three to twelve months. Their strategy ranks stocks each month on their past <i>J</i>-month return, buys the top decile, sells the bottom decile, and holds each position for <i>K</i> months, so that <i>K</i> overlapping positions are held at once, each with 1/<i>K</i> of the capital. A second set of strategies waits one week between ranking and buying.</p>
+<p>This companion applies the same construction to Indian shares. Every figure and table below responds to the portfolio specification above. Throughout, "the portfolio" is the long-only winners decile, equally weighted within each monthly cohort and rebalanced monthly, measured after Indian delivery costs: securities transaction tax, stamp duty, exchange and regulatory charges, and an assumed market impact of 0.1% per side for the 500 most-traded shares and 0.3% for all shares.</p>
+
+<h2 class="section">2. Performance</h2>
+<figure>
+  <div class="chart" id="figure-growth"></div>
+  <figcaption><b>Figure 1.</b> Growth of ₹1 invested in the selected portfolio after costs and in the NIFTY 500 with dividends reinvested, on a logarithmic scale. Sections 2 and 7 start in January 2007, the first month in which all 64 portfolios hold a full set of cohorts, so every specification is compared over the same months.</figcaption>
+</figure>
+<div class="table-wrap">
+  <table id="table-summary"></table>
+</div>
+<figure>
+  <div class="chart short" id="figure-drawdown"></div>
+  <figcaption><b>Figure 2.</b> Drawdown: the percentage below the previous peak value, for the portfolio and the index.</figcaption>
+</figure>
+<figure>
+  <div class="chart tall" id="figure-calendar"></div>
+  <figcaption><b>Figure 3.</b> Monthly return of the portfolio minus the NIFTY 500, by year and calendar month. India's financial year ends on 31 March, the counterpart of the US year-end that Jegadeesh and Titman linked to their January losses.</figcaption>
+</figure>
+<figure>
+  <div class="chart short" id="figure-rolling"></div>
+  <figcaption><b>Figure 4.</b> Rolling 36-month compound annual return of the portfolio minus that of the NIFTY 500.</figcaption>
+</figure>
+
+<h2 class="section">3. Current portfolio</h2>
+<p>The table lists the target portfolio for <span class="current-holding-month">…</span>, formed from cohorts ranked at the ends of the last <i>K</i> months. A share appearing in more than one of those cohorts carries proportionally more weight. "Months held" counts consecutive months the share has been in the portfolio, including this one. These are the strategy's targets, not anyone's actual holdings.</p>
+<div class="inline-controls">
+  <button class="button" id="download-current">Download as CSV</button>
+  <span id="current-summary" class="loading">…</span>
+</div>
+<div class="table-wrap scroll">
+  <table id="table-current"></table>
+</div>
+
+<h2 class="section">4. Joiners and leavers</h2>
+<p>Each month the oldest cohort expires and a new one is formed, so shares join and leave the portfolio. A leaver either dropped out of the winners decile or simply reached the end of its holding period without being ranked a winner again.</p>
+<div class="inline-controls">
+  <label>Month <select id="control-change-month"></select></label>
+  <span id="change-summary"></span>
+</div>
+<div class="two-column">
+  <div class="table-wrap scroll">
+    <table id="table-joiners"></table>
+  </div>
+  <div class="table-wrap scroll">
+    <table id="table-leavers"></table>
+  </div>
+</div>
+
+<h2 class="section">5. Historical constituents</h2>
+<h3 class="subsection">5.1 The portfolio on any date</h3>
+<div class="inline-controls">
+  <span>Holding month: <b id="history-month-label">…</b></span>
+</div>
+<input type="range" id="control-history-month" min="0" max="0" value="0">
+<div class="table-wrap scroll">
+  <table id="table-history"></table>
+</div>
+<h3 class="subsection">5.2 One share through time</h3>
+<div class="inline-controls">
+  <label>Share <input type="text" id="control-share" list="share-list" placeholder="e.g. INFY" size="16"></label>
+  <datalist id="share-list"></datalist>
+  <span id="share-summary"></span>
+</div>
+<figure>
+  <div class="chart short" id="figure-share"></div>
+  <figcaption><b>Figure 5.</b> The selected share's weight in the selected portfolio in each holding month. A weight of zero means the share was not among the winners of any cohort held that month.</figcaption>
+</figure>
+
+<h2 class="section">6. The cross-section of strategies</h2>
+<p>The specification above is one of 64. The heat map shows how the portfolio's annual return above the index varies with the ranking and holding periods for the selected gap and universe; the scatter places all 64 portfolios by return and worst fall.</p>
+<div class="two-column">
+  <figure>
+    <div class="chart" id="figure-heatmap"></div>
+    <figcaption><b>Figure 6.</b> Compound annual return above the NIFTY 500 with dividends, after costs, by ranking period <i>J</i> and holding period <i>K</i>, over the months all 64 portfolios share.</figcaption>
+  </figure>
+  <figure>
+    <div class="chart" id="figure-scatter"></div>
+    <figcaption><b>Figure 7.</b> Compound annual return against maximum drawdown for all 64 portfolios. The selected portfolio is ringed.</figcaption>
+  </figure>
+</div>
+<div class="table-wrap">
+  <table id="table-paper"></table>
+</div>
+
+<h2 class="section">7. Portfolio analytics</h2>
+<figure>
+  <div class="chart short" id="figure-breadth"></div>
+  <figcaption><b>Figure 8.</b> Number of shares held each month, and the effective number of shares, the reciprocal of the sum of squared weights, which falls when weight concentrates in shares appearing in several cohorts.</figcaption>
+</figure>
+<figure>
+  <div class="chart short" id="figure-turnover"></div>
+  <figcaption><b>Figure 9.</b> Rolling 12-month turnover: the value bought plus the value sold over the past 12 months, as a share of the portfolio. Table 7 gives the return this costs.</figcaption>
+</figure>
+<div class="table-wrap">
+  <table id="table-risk"></table>
+</div>
+
+<h2 class="section">8. Data and methods</h2>
+<p>Share prices come from the National Stock Exchange's daily bhavcopy files. NSE does not adjust the previous close on an ex-date, so returns are adjusted with NSE's own list of splits, bonuses, consolidations and dividends, which is complete from 2005; each split or bonus is placed on the trading day near its listed ex-date whose price change best matches its ratio. Daily returns below −50% or above +100% are treated as data errors. Monthly returns compound daily returns within each calendar month. A share is eligible for ranking if it traded in each of the <i>J</i> + 1 months up to the formation date; the "500 most traded" universe keeps the 500 eligible shares with the highest median daily traded value over the previous six months. The benchmark is the NIFTY 500 price index plus one twelfth of its reported dividend yield each month.</p>
+<p>The study's full tables, the code that produces every number on this page, and the caveats are in the <a href="https://github.com/pramodathani/jegadeesh-titman-momentum-india">repository</a>. The best of 64 backtests is partly luck: with 64 strategies tested, a single one needs a <i>t</i>-statistic near 3.2 to rule out chance. Market impact is assumed rather than measured, and momentum portfolios can lose most of their value in a crash. Nothing here is investment advice.</p>
+
+<h2 class="section">References</h2>
+<ol class="references">
+  <li>De Bondt, W. F. M., and Thaler, R. (1985). Does the stock market overreact? <i>The Journal of Finance</i>, 40(3), 793–805.</li>
+  <li>Jegadeesh, N., and Titman, S. (1993). Returns to buying winners and selling losers: Implications for stock market efficiency. <i>The Journal of Finance</i>, 48(1), 65–91. <a href="https://doi.org/10.1111/j.1540-6261.1993.tb04702.x">doi:10.1111/j.1540-6261.1993.tb04702.x</a></li>
+  <li>National Stock Exchange of India. Daily bhavcopy, corporate actions and index close archives. <a href="https://www.nseindia.com/all-reports">nseindia.com</a></li>
+  <li>Newey, W. K., and West, K. D. (1987). A simple, positive semi-definite, heteroskedasticity and autocorrelation consistent covariance matrix. <i>Econometrica</i>, 55(3), 703–708.</li>
+</ol>
+
+<p class="footnote">Charts use <a href="https://echarts.apache.org/">Apache ECharts</a>. This page reads only precomputed results shipped with the repository; no NSE prices are redistributed. Licensed under the MIT licence.</p>
+
+</main>
+<script src="app.js"></script>
+</body>
+</html>
