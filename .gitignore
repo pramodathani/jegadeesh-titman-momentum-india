@@ -1,0 +1,21 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+
+# Data downloaded from NSE and tradingmachine
+data/
+
+# Paper
+pdf/
+
+# Live trading records
+results/live_runs/
+results/live_targets/

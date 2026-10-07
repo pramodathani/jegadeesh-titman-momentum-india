@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this replication, please cite it as below, and cite the original paper."
+title: "Momentum in Indian equities: a replication of Jegadeesh and Titman (1993) on NSE shares"
+authors:
+  - family-names: Athani
+    given-names: Pramod
+repository-code: "https://github.com/pramodathani/jegadeesh-titman-momentum-india"
+license: MIT
+version: 0.1.0
+date-released: 2026-10-07
+keywords:
+  - momentum
+  - jegadeesh-titman
+  - india
+  - nse
+  - quantitative-finance
+  - factor-investing
+references:
+  - type: article
+    authors:
+      - family-names: Jegadeesh
+        given-names: Narasimhan
+      - family-names: Titman
+        given-names: Sheridan
+    title: "Returns to Buying Winners and Selling Losers: Implications for Stock Market Efficiency"
+    journal: "The Journal of Finance"
+    volume: 48
+    issue: 1
+    start: 65
+    end: 91
+    year: 1993
+    doi: "10.1111/j.1540-6261.1993.tb04702.x"
