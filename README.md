@@ -9,6 +9,19 @@ A replication of Jegadeesh and Titman's *Returns to Buying Winners and Selling L
   <img alt="Growth of Rs 1 from 2007 to 2026 for the best liquid momentum portfolio, the paper's best strategy and the NIFTY 500 total return" src="results/charts/growth-light.svg">
 </picture>
 
+## Interactive companion
+
+**[Open the web app](https://pramodathani.github.io/jegadeesh-titman-momentum-india/)**, written like a short paper. Choose any of the 64 portfolios and see its growth, drawdowns and calendar of monthly returns against the index, the current portfolio with weights and liquidity, the joiners and leavers in any month, the portfolio on any date since 2006, one share's history in the portfolio, the full cross-section of strategies next to the paper's Table I, and risk and turnover analytics. Every view links directly, for example [`#j12-k3-skip5-top500`](https://pramodathani.github.io/jegadeesh-titman-momentum-india/#j12-k3-skip5-top500) for the paper's best strategy.
+
+To run it on your own computer, with no data downloads and no configuration:
+
+```bash
+pip install "git+https://github.com/pramodathani/jegadeesh-titman-momentum-india"
+jt-momentum-app
+```
+
+`jt-momentum-app` serves the app at `http://127.0.0.1:8000/` and opens it in your browser. The app reads only the study's results, shipped with the package as about 9 MB of data files; the charts load Apache ECharts from a CDN, so an internet connection is needed for them.
+
 ## Headline results
 
 Long-only winners decile of the 500 most-traded NSE shares, rebalanced monthly, after Indian delivery costs, January 2007 to September 2026 (237 months):
@@ -106,6 +119,7 @@ python -m venv .venv
 .venv/bin/python -m jegadeesh_titman_india.scripts.run_study                              # the paper's tables, 2005-2026
 .venv/bin/python -m jegadeesh_titman_india.scripts.compare_portfolios                     # the 64 long-only portfolios
 .venv/bin/python -m jegadeesh_titman_india.scripts.draw_readme_charts
+.venv/bin/python -m jegadeesh_titman_india.scripts.build_snapshot                         # the web app's data
 .venv/bin/python -m pytest
 ```
 
@@ -125,6 +139,8 @@ src/jegadeesh_titman_india/
 ├── momentum/         monthly returns, deciles, overlapping portfolios, costs, statistics, the study and the charts
 │   └── price_sources/   bhavcopy and tradingmachine daily returns
 ├── live/             strategy specifications, targets, books, fills and rebalancing (optional)
+├── site/             the web app: index.html, app.js, style.css and its data snapshot
+├── site_server.py    the jt-momentum-app command
 └── scripts/          the command-line programs above
 tests/                unit tests on small made-up data with known answers
 results/              the tables, the 64-portfolio comparison and the charts
