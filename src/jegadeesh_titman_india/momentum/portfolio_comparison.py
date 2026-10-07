@@ -62,7 +62,7 @@ class PortfolioComparison:
         """Gives every portfolio's monthly return after Indian trading costs.
 
         Returns:
-            A pandas.DataFrame indexed by month with one column per strategy name, NaN before a portfolio has a full set of cohorts.
+            A pandas.DataFrame indexed by month with one column of after-cost returns per strategy name, plus `<name>__gross` columns before costs and `<name>__turnover` columns holding the fraction of the portfolio bought plus sold that month, all NaN before a portfolio has a full set of cohorts.
 
         Raises:
             Nothing.
@@ -84,6 +84,7 @@ class PortfolioComparison:
             costs = indian_transaction_costs.IndianTransactionCosts(impact_cost=IMPACT_COST_BY_UNIVERSE[specification.universe_name])
             columns[specification.name] = costs.net_returns(gross, bought, sold).where(gross.notna())
             columns[specification.name + '__turnover'] = (bought + sold).where(gross.notna())
+            columns[specification.name + '__gross'] = gross
         return pd.DataFrame(columns)
 
     def table(self) -> pd.DataFrame:
@@ -98,7 +99,7 @@ class PortfolioComparison:
         frame = self.net_returns()
         return_columns = []
         for column in frame.columns:
-            if not column.endswith('__turnover'):
+            if '__' not in column:
                 return_columns.append(column)
         common = frame[return_columns].dropna().index.intersection(self.benchmark_returns.dropna().index)
         benchmark = self.benchmark_returns.loc[common]
