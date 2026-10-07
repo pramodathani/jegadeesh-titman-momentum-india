@@ -1,4 +1,4 @@
-"""Draws the README's growth chart, in light and dark versions, from the bhavcopy portfolio comparison.
+"""Draws the README's growth chart, in light and dark versions, from the bhavcopy portfolio comparison, over the same months as its table.
 
 Run from the repository root after compare_portfolios:
 
@@ -23,6 +23,8 @@ DATA_DIRECTORY = STUDY_DIRECTORY / 'data'
 RESULTS_DIRECTORY = STUDY_DIRECTORY / 'results'
 
 NET_RETURNS_FILE = RESULTS_DIRECTORY / 'portfolio_comparison' / 'bhavcopy_from_2005_monthly_net_returns.csv'
+
+COMPARISON_FILE = RESULTS_DIRECTORY / 'portfolio_comparison' / 'bhavcopy_from_2005.csv'
 
 SERIES = {
     'jt-momentum-j9-k3-skip0-top500': 'Best liquid: J9/K3',
@@ -50,7 +52,10 @@ class DrawReadmeChartsApplication:
         for column, label in SERIES.items():
             series_by_label[label] = net_returns[column]
         series_by_label['NIFTY 500 total return'] = benchmark
+        comparison = pd.read_csv(COMPARISON_FILE, index_col=0)
+        comparison_start = pd.Period(comparison['first_month'].iloc[0], freq='M')
         frame = pd.DataFrame(series_by_label).dropna()
+        frame = frame[frame.index >= comparison_start]
         common = {}
         for label in frame.columns:
             common[label] = frame[label]
