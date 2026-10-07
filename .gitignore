@@ -11,10 +11,10 @@ dist/
 .pytest_cache/
 
 # Data downloaded from NSE and tradingmachine
-data/
+/data/
 
 # Paper
-pdf/
+/pdf/
 
 # Live trading records
 results/live_runs/
