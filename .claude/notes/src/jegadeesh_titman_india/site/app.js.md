@@ -2,7 +2,7 @@
 
 ## Design
 
-The app is a static page styled as a research paper, at the user's request on 2026-10-07: a serif face (Source Serif 4), a 760-pixel column, an abstract, numbered sections, "Figure n" and "Table n" captions, journal-style tables with horizontal rules only, and references. The user chose a static site over Streamlit so that it needs no server, all 64 strategies, a public GitHub Pages site, and no personal holdings.
+The app is a static page styled as a research paper, at the user's request on 2026-10-07: Times New Roman, falling back to the metric-compatible Tinos from Google Fonts where it is not installed (the user asked for Times New Roman on 2026-10-07), a 760-pixel column, an abstract, numbered sections, "Figure n" and "Table n" captions, journal-style tables with horizontal rules only, and references. The user chose a static site over Streamlit so that it needs no server, all 64 strategies, a public GitHub Pages site, and no personal holdings.
 
 Everything is computed in the browser from the snapshot (see `momentum/site_snapshot.py.md`):
 

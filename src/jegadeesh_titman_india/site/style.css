@@ -18,7 +18,7 @@
   --diverging-neutral: #f0efec;
   --diverging-positive: #86b6ef;
   --diverging-positive-strong: #1c5cab;
-  --serif: "Source Serif 4", "STIX Two Text", Georgia, "Times New Roman", serif;
+  --serif: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
   --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
@@ -61,7 +61,7 @@ body {
   font-family: var(--serif);
   font-size: 17px;
   line-height: 1.6;
-  font-feature-settings: "kern", "liga", "onum";
+  font-feature-settings: "kern", "liga";
 }
 
 main {
