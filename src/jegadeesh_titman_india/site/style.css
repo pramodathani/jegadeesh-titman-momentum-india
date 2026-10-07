@@ -64,11 +64,16 @@ header.paper-head h1 {
   margin: 0 0 16px;
 }
 
+header.paper-head p {
+  text-align: center;
+}
+
 .authors {
   font-size: 1.05rem;
   margin: 0;
 }
 
+.contact,
 .affiliation,
 .dateline {
   color: var(--ink-secondary);

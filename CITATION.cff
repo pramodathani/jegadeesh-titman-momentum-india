@@ -4,6 +4,8 @@ title: "Momentum in Indian equities: a replication of Jegadeesh and Titman (1993
 authors:
   - family-names: Athani
     given-names: Pramod
+    email: pramod.athani@gmail.com
+    orcid: "https://orcid.org/0009-0002-0270-7045"
 repository-code: "https://github.com/pramodathani/jegadeesh-titman-momentum-india"
 license: MIT
 version: 0.1.0
