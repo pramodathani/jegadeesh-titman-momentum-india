@@ -28,6 +28,12 @@
   <p class="keywords"><b>Keywords:</b> momentum, relative strength, market efficiency, India, NSE, replication. <b>JEL:</b> G11, G12, G14.</p>
 </section>
 
+<div class="citation-box">
+  <div class="label">Suggested citation</div>
+  <p id="citation-text">Athani, P. (2026). <i>Momentum in Indian Equities: Returns to Buying Winners on the National Stock Exchange, 2005–2026</i> (Version 0.1) [Interactive paper and software]. https://pramodathani.github.io/jegadeesh-titman-momentum-india/</p>
+  <button class="button" id="copy-citation">Copy</button>
+</div>
+
 <div class="specification" id="specification">
   <div class="label">Portfolio specification</div>
   <div class="controls">
@@ -155,6 +161,11 @@
 <h2 class="section">8. Data and methods</h2>
 <p>Share prices come from the National Stock Exchange's daily bhavcopy files. NSE does not adjust the previous close on an ex-date, so returns are adjusted with NSE's own list of splits, bonuses, consolidations and dividends, which is complete from 2005; each split or bonus is placed on the trading day near its listed ex-date whose price change best matches its ratio. Daily returns below −50% or above +100% are treated as data errors. Monthly returns compound daily returns within each calendar month. A share is eligible for ranking if it traded in each of the <i>J</i> + 1 months up to the formation date; the "500 most traded" universe keeps the 500 eligible shares with the highest median daily traded value over the previous six months. The benchmark is the NIFTY 500 price index plus one twelfth of its reported dividend yield each month.</p>
 <p>The study's full tables, the code that produces every number on this page, and the caveats are in the <a href="https://github.com/pramodathani/jegadeesh-titman-momentum-india">repository</a>. The best of 64 backtests is partly luck: with 64 strategies tested, a single one needs a <i>t</i>-statistic near 3.2 to rule out chance. Market impact is assumed rather than measured, and momentum portfolios can lose most of their value in a crash. Nothing here is investment advice.</p>
+
+<h2 class="section">Declarations</h2>
+<p><b>Conflicts of interest.</b> The author may hold, or may in future hold, positions in the strategies and shares discussed here. The results are historical backtests, not forecasts, and nothing on this page is investment advice. The author has no other conflicts of interest to declare.</p>
+<p><b>Data and code availability.</b> All code, the study's tables and the data behind this page are openly available at <a href="https://github.com/pramodathani/jegadeesh-titman-momentum-india">github.com/pramodathani/jegadeesh-titman-momentum-india</a> under the MIT licence. Share prices, corporate actions and index levels come from the National Stock Exchange of India's public archives; they are not redistributed, and the repository's scripts download them.</p>
+<p><b>Funding.</b> This research received no external funding.</p>
 
 <h2 class="section">References</h2>
 <ol class="references">

@@ -428,6 +428,7 @@ class CompanionApp {
     document.getElementById('control-history-month').addEventListener('input', () => this.renderHistory());
     document.getElementById('control-share').addEventListener('change', () => this.renderShare());
     document.getElementById('download-current').addEventListener('click', () => this.downloadCurrent());
+    document.getElementById('copy-citation').addEventListener('click', () => this.copyCitation());
   }
 
   async onSpecificationChange() {
@@ -905,6 +906,20 @@ class CompanionApp {
     link.download = `${this.strategyName()}-${holdingMonth}.csv`;
     link.click();
     URL.revokeObjectURL(link.href);
+  }
+
+  async copyCitation() {
+    const button = document.getElementById('copy-citation');
+    const text = document.getElementById('citation-text').textContent;
+    try {
+      await navigator.clipboard.writeText(text);
+      button.textContent = 'Copied';
+    } catch (error) {
+      button.textContent = 'Select the text to copy';
+    }
+    setTimeout(() => {
+      button.textContent = 'Copy';
+    }, 2000);
   }
 
   renderChangeMonths() {
